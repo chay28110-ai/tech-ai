@@ -1,1 +1,109 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tech.ai - Your AI Assistant</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101522;
+      color: white;
+    }
+    header {
+      padding: 20px;
+      background: #171f30;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { color: #65a8ff; margin: 0; }
+    main {
+      max-width: 850px;
+      margin: 60px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .chat {
+      background: #1b2639;
+      padding: 20px;
+      border-radius: 16px;
+      margin-top: 30px;
+    }
+    #messages {
+      min-height: 180px;
+      text-align: left;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    .input-area {
+      display: flex;
+      gap: 10px;
+    }
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #52627a;
+      background: #101522;
+      color: white;
+    }
+    button {
+      padding: 14px 20px;
+      background: #3985ff;
+      color: white;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:disabled { opacity: .6; }
+    .hint { color: #aebbd0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>tech.ai</h1>
+    <span>Independent AI Assistant</span>
+  </header>
+
+  <main>
+    <h2>Your ideas. Your AI.</h2>
+    <p class="hint">Welcome to tech.ai. Ask your first question!</p>
+
+    <section class="chat">
+      <div id="messages">🤖 tech.ai: Hello! How can I help you today?</div>
+      <div class="input-area">
+        <input id="question" placeholder="Ask tech.ai anything...">
+        <button id="send">Send</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const input = document.getElementById("question");
+    const messages = document.getElementById("messages");
+    const send = document.getElementById("send");
+
+    function ask() {
+      const question = input.value.trim();
+      if (!question) return;
+
+      messages.textContent +=
+        "\n\nYou: " + question +
+        "\n\ntech.ai: Your AI connection will be activated in the next development stage.";
+
+      input.value = "";
+    }
+
+    send.addEventListener("click", ask);
+    input.addEventListener("keydown", e => {
+      if (e.key === "Enter") ask();
+    });
+  </script>
+</body>
+</html>
+
